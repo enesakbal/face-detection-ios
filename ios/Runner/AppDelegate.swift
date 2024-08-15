@@ -9,12 +9,12 @@ import Vision
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     let controller : FlutterViewController = window?.rootViewController as! FlutterViewController
-    let faceDetectionChannel = FlutterMethodChannel(name: "face_detection", binaryMessenger: controller.binaryMessenger)
+    let faceDetectionChannel = FlutterMethodChannel(name: "com.example.faceDetectionIos/faceDetectionIos", binaryMessenger: controller.binaryMessenger)
     
     faceDetectionChannel.setMethodCallHandler({(call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
-      if call.method == "getFaceCount" {
+      if call.method == "getFaceCountFromImage" {
         if let imagePath = call.arguments as? String {
-          self.detectFaces(imagePath: imagePath, result: result)
+          self.detectFacesFromImage(imagePath: imagePath, result: result)
         }
       } else {
         result(FlutterMethodNotImplemented)
@@ -26,7 +26,7 @@ import Vision
   }
 
 
-private func detectFaces(imagePath: String, result: @escaping FlutterResult) {
+private func detectFacesFromImage(imagePath: String, result: @escaping FlutterResult) {
     let imageURL = URL(fileURLWithPath: imagePath)
     guard let image = CIImage(contentsOf: imageURL) else {
       result(FlutterError(code: "UNAVAILABLE", message: "Cannot load image", details: nil))
