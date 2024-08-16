@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 
 abstract class FaceDetectionManager {
+  static const _channel = MethodChannel('com.example.faceDetectionIos/faceDetectionIos');
+
   static Future<int> detectFaceFromImage(String imagePath) async {
     try {
       if (Platform.isIOS) {
@@ -23,6 +25,4 @@ abstract class FaceDetectionManager {
       rethrow;
     }
   }
-
-  static const _channel = MethodChannel('com.example.faceDetectionIos/faceDetectionIos');
 }

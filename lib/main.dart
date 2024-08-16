@@ -1,4 +1,5 @@
 import 'package:face_detection_ios/face_detection_manager.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -19,7 +20,8 @@ class _MainAppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return CupertinoApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         bottomNavigationBar: SafeArea(
           child: Padding(
@@ -91,7 +93,7 @@ class _MainAppState extends State<MainApp> {
                   child: Builder(
                     builder: (context) {
                       if (selectedImagePath == null) {
-                        return const Text('No image selected');
+                        return const Center(child: Text('No image selected'));
                       }
 
                       return Image.asset(selectedImagePath!);
