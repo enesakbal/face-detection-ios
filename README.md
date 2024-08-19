@@ -67,8 +67,7 @@ private func detectFacesFromImage(imagePath: String, result: @escaping FlutterRe
 }
 ```
 
-
-## Usage
+## Usage
 ```dart
 import 'dart:io';
 
@@ -99,6 +98,10 @@ abstract class FaceDetectionManager {
   }
 }
 ```
+
+## Example App
+
+![face-detection](https://github.com/user-attachments/assets/c498cea9-351f-40f7-a483-4e67d97e6d1d)
 
 
 ### Set Up
